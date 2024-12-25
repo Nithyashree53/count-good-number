@@ -1,0 +1,24 @@
+class Solution {
+    public long power(long x,long y,long mod){
+        long result=1;
+        x=x%mod;
+        while(y>0){
+            if(y%2!=0){
+                result=(result*x)%mod;
+            }
+            y=y/2;
+            x=(x*x)%mod;
+        }
+        return result;
+    }
+    public int countGoodNumbers(long n) {
+        long mod=1000000007;
+        long evencount=(n+1)/2;
+        long oddcount=n/2;
+        long evenway=power(5,evencount,mod);
+        long oddway=power(4,oddcount,mod);
+        return (int)((evenway*oddway)%mod);
+        
+        
+    }
+}
